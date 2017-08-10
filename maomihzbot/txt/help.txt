@@ -1,0 +1,34 @@
+*这是一只猫猫！bot！*
+
+命令列表：
+/fortune - 随机一句经典名言
+/random - 生成随机字符串
+/randint - 生成随机整数
+/randsample - 生成整数样本
+/b64 - 64进制编码
+/uuid - 随机UUID
+
+/help - show the help
+/start - start the bot
+
+命令详解：
+/random [长度] [格式]
+长度：1-512。
+格式：为以下的一项
+'hex': 十六进制小写
+'oct': 八进制
+'bin': 二进制
+'dec': 十进制
+'lower': 小写字母
+'upper': 大写字母
+'alpha': 小写+大写字母
+'number': 十进制数字
+'symbol': 标点符号
+'password': 字母+数字+符号
+'alphanum': 字母+符号
+
+/b64 [字符串] 64进制编码
+
+/randint [范围] [个数]
+/randsample [范围] [个数]
+randint命令和randsample基本相同。randint返回无序、可重复的整数，randsample返回正序、不重复的整数。范围由英文逗号分隔的数字和范围组成。范围由-连接，例子：'1,2,3,4' '1-5,10-15'

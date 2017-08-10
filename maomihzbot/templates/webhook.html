@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block body %}
+
+<h1>Setup Webhook</h1>
+
+<form action="/webhook" method="post">
+  Web URL (Start with https://):<br>
+  <input type="text" name="url" id="url"><br>
+  Bot Token:<br>
+  <input type="text" name="token" id="token"><br>
+  <input class="button" type="submit" value="Submit">
+</form>
+
+<p>Your webhook would be set to <span id="prompt"></span></p>
+
+<script>
+if (document.getElementById(url).value == "") {
+    document.getElementById("url").value = window.location.protocol + '//' + window.location.hostname;
+}
+
+  function join_address() {
+    url = document.getElementById("url").value;
+    token = document.getElementById("token").value;
+    if (url.substring(url.length - 1, url.length) != "/") {
+      url = url + "/";
+    }
+    document.getElementById("prompt").innerHTML = url + "bot" + token;
+  }
+
+  document.getElementById("url").addEventListener("change", join_address);
+  document.getElementById("token").addEventListener("change", join_address);
+</script>
+{% endblock %}

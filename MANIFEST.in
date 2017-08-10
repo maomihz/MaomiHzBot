@@ -1,0 +1,3 @@
+graft maomihzbot/txt
+graft maomihzbot/templates
+graft maomihzbot/static
