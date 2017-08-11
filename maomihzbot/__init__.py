@@ -27,15 +27,16 @@ from .commands import random, b64, fortune, randint, randsample, uuid
 # Broadcast a message to a channel or a person
 if BROADCAST_ID:
     def echo(bot, update):
-        bot.send_message(chat_id=BROADCAST_ID,
-                         text='{} {}({}, from {}, @{}): \n{}'.format(
-                             update.message.from_user.first_name,
-                             update.message.from_user.last_name,
-                             update.message.from_user.id,
-                             update.message.chat_id,
-                             update.message.from_user.username,
-                             update.message.text
-                         ))
+        if not update.channel_post:
+            bot.send_message(chat_id=BROADCAST_ID,
+                             text='{} {}({}, from {}, @{}): \n{}'.format(
+                                 update.message.from_user.first_name,
+                                 update.message.from_user.last_name,
+                                 update.message.from_user.id,
+                                 update.message.chat_id,
+                                 update.message.from_user.username,
+                                 update.message.text
+                             ))
     # Broadcast messages to channel
     dp.add_handler(MessageHandler(Filters.all, echo), 1)
 
