@@ -36,8 +36,8 @@ if BROADCAST_ID:
                              update.message.from_user.username,
                              update.message.text
                          ))
-        # Broadcast messages to channel
-        dp.add_handler(MessageHandler(Filters.all, echo), 1)
+    # Broadcast messages to channel
+    dp.add_handler(MessageHandler(Filters.all, echo), 1)
 
 
 handlers = [
