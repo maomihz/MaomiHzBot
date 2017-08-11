@@ -11,23 +11,28 @@
   <input class="button" type="submit" value="Submit">
 </form>
 
-<p>Your webhook would be set to <span id="prompt"></span></p>
+<p>Webhook URL: <span id="prompt"></span></p>
 
 <script>
-if (document.getElementById(url).value == "") {
-    document.getElementById("url").value = window.location.protocol + '//' + window.location.hostname;
-}
+  var url_box = document.getElementById("url")
+  var token_box = document.getElementById("token")
 
-  function join_address() {
-    url = document.getElementById("url").value;
-    token = document.getElementById("token").value;
-    if (url.substring(url.length - 1, url.length) != "/") {
-      url = url + "/";
-    }
-    document.getElementById("prompt").innerHTML = url + "bot" + token;
+  if (url_box.value == "") {
+    var protocol = window.location.protocol
+    var hostname = window.location.hostname
+    var pathname = window.location.pathname
+    var path = pathname.substring(0, pathname.lastIndexOf("/") + 1)
+      url_box.value = protocol + '//' + hostname + path;
   }
 
-  document.getElementById("url").addEventListener("change", join_address);
-  document.getElementById("token").addEventListener("change", join_address);
+  function join_address() {
+    if (url_box.value.substring(url_box.value.length - 1, url_box.value.length) != "/") {
+      url = url + "/";
+    }
+    document.getElementById("prompt").innerHTML = url_box.value + "bot" + token_box.value;
+  }
+
+  url_box.addEventListener("keyup", join_address);
+  token_box.addEventListener("keyup", join_address);
 </script>
 {% endblock %}
